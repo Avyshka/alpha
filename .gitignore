@@ -1,0 +1,8 @@
+/org/
+/avmplus/
+/.settings/
+/AuthortimeSharedAssets.fla
+*.swf
+*.swc
+/.project
+/.actionScriptProperties
