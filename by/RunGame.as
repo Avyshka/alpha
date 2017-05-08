@@ -7,6 +7,7 @@
 	import by.view.BottomBarMediator;
 	import by.view.ScreenMediator;
 	import by.view.ScreenView;
+	import by.model.BottomBarModel;
 	
 	public class RunGame extends Context  
 	{
@@ -33,6 +34,8 @@
 			// Manually add something to stage
 			contextView.addChild(new Readout());
 			*/
+			injector.mapSingleton(BottomBarModel);
+			
 			mediatorMap.mapView(ScreenView, ScreenMediator);
 			mediatorMap.mapView(BottomBarView, BottomBarMediator);
 			
