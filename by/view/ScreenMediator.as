@@ -22,13 +22,11 @@
 		
 		protected function onPlayHandler(evt:BottomBarEvent):void
 		{
-			trace("play screen");
 			eventMap.mapListener(contextView, Event.ENTER_FRAME, onLoop);
 		}
 		
 		protected function onStopHandler(evt:BottomBarEvent):void
 		{
-			trace("stop screen");
 			eventMap.unmapListener(contextView, Event.ENTER_FRAME, onLoop);
 		}
 		
