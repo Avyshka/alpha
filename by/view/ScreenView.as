@@ -16,11 +16,25 @@
 			_video = new Video_mc();
 			_video.x = _screen.width * .5;
 			_video.y = _screen.height * .5;
-			_video.scaleX = _video.scaleY = .25;
-			//_video.stop();
+			_video.scaleX = _video.scaleY = .4;
+			_video.stop();
 			addChild(_video);
 		}
-
+		
+		public function step():void
+		{
+			_video.nextFrame();
+		}
+		
+		public function repeat():void
+		{
+			_video.gotoAndStop(1);
+		}
+		
+		public function get isComplete():Boolean
+		{
+			return _video.currentFrame == _video.totalFrames;
+		}
 	}
 
 }
