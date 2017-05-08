@@ -27,8 +27,6 @@
 		
 		protected function onClick(e:MouseEvent):void
 		{
-			trace("play");
-			
 			if(!model.isPlay)
 			{
 				// Manipulate the model
