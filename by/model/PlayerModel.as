@@ -6,6 +6,7 @@
 	{
 		private var _isPlay:Boolean;
 		private var _isComplete:Boolean;
+		private var _percent:Number;
 		
 		public function PlayerModel()
 		{
@@ -31,6 +32,9 @@
 		
 		public function get isPlay():Boolean { return _isPlay; }
 		public function get isComplete():Boolean { return _isComplete; }
+		
+		public function set percent(value:Number):void { _percent = value; }
+		public function get percent():Number { return _percent; }
 	}
 
 }
