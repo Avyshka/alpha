@@ -54,6 +54,7 @@
 					eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.COMPLETE));
 				}
 			}
+			eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.TICK));
 		}
 	}
 
