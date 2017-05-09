@@ -13,6 +13,8 @@
 		[Inject]
 		public var model:PlayerModel;
 		
+		private var _isDown:Boolean;
+		
 		public function BottomBarMediator()
 		{
 			// constructor code
@@ -21,7 +23,6 @@
 		override public function onRegister():void
 		{
 			// Listen to the context
-			//eventMap.mapListener(eventDispatcher, HelloFlashEvent.BALL_CLICKED, onBallClicked);
 			eventMap.mapListener(view.btnPlay, MouseEvent.MOUSE_UP, onClick);
 			
 			eventMap.mapListener(view.btnPlay, MouseEvent.MOUSE_OVER, onOver);
@@ -63,11 +64,15 @@
 			}
 			
 			view.over();
+			_isDown = false;
 		}
 		
 		protected function onOver(e:MouseEvent):void
 		{
-			view.over();
+			if(_isDown)
+				view.down();
+			else
+				view.over();
 		}
 		
 		protected function onOut(e:MouseEvent):void
@@ -78,6 +83,7 @@
 		protected function onDown(e:MouseEvent):void
 		{
 			view.down();
+			_isDown = true;
 		}
 		
 		protected function onComplete(evt:PlayerEvent):void
