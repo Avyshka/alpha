@@ -45,6 +45,7 @@
 			if(!view.isComplete)
 			{
 				view.step();
+				model.percent = view.percent;
 			}
 			else
 			{
