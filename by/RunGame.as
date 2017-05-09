@@ -46,8 +46,10 @@
 			screen.y = screen.x = 8;
 			
 			var progressBar:ProgressBarView = new ProgressBarView();
-			progressBar.y = screen.y + screen.height - progressBar.height * 2;
-			progressBar.x = (screen.x + screen.width * .5) - (ProgressBarView.RANGE * .5);
+			progressBar.scaleX = progressBar.scaleY = .85;
+			progressBar.y = screen.y + screen.height - progressBar.height * 2.25;
+			progressBar.x = (screen.x + screen.width * .5) - (ProgressBarView.RANGE * .5 * progressBar.scaleX);
+			
 			
 			var bottomBar:BottomBarView = new BottomBarView();
 			bottomBar.y = 360 - 64;
