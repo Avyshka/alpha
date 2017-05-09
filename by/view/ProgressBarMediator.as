@@ -2,6 +2,7 @@
 {
 	import org.robotlegs.mvcs.Mediator;
 	import by.model.PlayerModel;
+	import by.controller.PlayerEvent;
 
 	public class ProgressBarMediator extends Mediator
 	{
@@ -18,7 +19,12 @@
 		
 		override public function onRegister():void
 		{
-			
+			eventMap.mapListener(eventDispatcher, PlayerEvent.TICK, onLoop);
+		}
+		
+		protected function onLoop(evt:PlayerEvent):void
+		{
+			view.update(model.percent);
 		}
 	}
 
