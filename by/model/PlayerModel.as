@@ -2,12 +2,12 @@
 {
 	import org.robotlegs.mvcs.Actor;
 
-	public class BottomBarModel extends Actor
+	public class PlayerModel extends Actor
 	{
 		private var _isPlay:Boolean;
 		private var _isComplete:Boolean;
 		
-		public function BottomBarModel()
+		public function PlayerModel()
 		{
 			_isPlay = false;
 			_isComplete = false;
