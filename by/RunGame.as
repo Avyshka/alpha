@@ -7,7 +7,9 @@
 	import by.view.BottomBarMediator;
 	import by.view.ScreenMediator;
 	import by.view.ScreenView;
-	import by.model.BottomBarModel;
+	import by.model.PlayerModel;
+	import by.view.ProgressBarView;
+	import by.view.ProgressBarMediator;
 	
 	public class RunGame extends Context  
 	{
@@ -34,18 +36,24 @@
 			// Manually add something to stage
 			contextView.addChild(new Readout());
 			*/
-			injector.mapSingleton(BottomBarModel);
+			injector.mapSingleton(PlayerModel);
 			
 			mediatorMap.mapView(ScreenView, ScreenMediator);
+			mediatorMap.mapView(ProgressBarView, ProgressBarMediator);
 			mediatorMap.mapView(BottomBarView, BottomBarMediator);
 			
 			var screen:ScreenView = new ScreenView();
 			screen.y = screen.x = 8;
 			
+			var progressBar:ProgressBarView = new ProgressBarView();
+			progressBar.y = screen.y + screen.height - progressBar.height * 2;
+			progressBar.x = (screen.x + screen.width * .5) - (ProgressBarView.RANGE * .5);
+			
 			var bottomBar:BottomBarView = new BottomBarView();
 			bottomBar.y = 360 - 64;
 			
 			contextView.addChild(screen);
+			contextView.addChild(progressBar);
 			contextView.addChild(bottomBar);
 			
 			// And we're done
