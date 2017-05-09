@@ -48,6 +48,8 @@
 		{
 			return _video.currentFrame == _video.totalFrames;
 		}
+		
+		public function get percent():Number { return _video.currentFrame / _video.totalFrames; }
 	}
 
 }
