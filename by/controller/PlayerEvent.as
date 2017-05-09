@@ -8,6 +8,7 @@
 		public static const STOP:String = "stop";
 		public static const COMPLETE:String = "complete";
 		public static const REPEAT:String = "repeat";
+		public static const TICK:String = "tick";
 		
 		public function PlayerEvent(type:String)
 		{
