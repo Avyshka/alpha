@@ -1,10 +1,9 @@
 ﻿package by.view
 {
 	import org.robotlegs.mvcs.Mediator;
-	import by.controller.BottomBarEvent;
 	import flash.events.Event;
-	import by.controller.ScreenEvent;
-	import by.model.BottomBarModel;
+	import by.controller.PlayerEvent;
+	import by.model.PlayerModel;
 
 	public class ScreenMediator extends Mediator
 	{
@@ -12,7 +11,7 @@
 		public var view:ScreenView;
 		
 		[Inject]
-		public var model:BottomBarModel;
+		public var model:PlayerModel;
 		
 		public function ScreenMediator()
 		{
@@ -21,22 +20,22 @@
 		
 		override public function onRegister():void
 		{
-			eventMap.mapListener(eventDispatcher, BottomBarEvent.PLAY, onPlayHandler);
-			eventMap.mapListener(eventDispatcher, BottomBarEvent.STOP, onStopHandler);
-			eventMap.mapListener(eventDispatcher, ScreenEvent.REPEAT, onRepeatHandler);
+			eventMap.mapListener(eventDispatcher, PlayerEvent.PLAY, onPlayHandler);
+			eventMap.mapListener(eventDispatcher, PlayerEvent.STOP, onStopHandler);
+			eventMap.mapListener(eventDispatcher, PlayerEvent.REPEAT, onRepeatHandler);
 		}
 		
-		protected function onPlayHandler(evt:BottomBarEvent):void
+		protected function onPlayHandler(evt:PlayerEvent):void
 		{
 			eventMap.mapListener(contextView, Event.ENTER_FRAME, onLoop);
 		}
 		
-		protected function onStopHandler(evt:BottomBarEvent):void
+		protected function onStopHandler(evt:PlayerEvent):void
 		{
 			eventMap.unmapListener(contextView, Event.ENTER_FRAME, onLoop);
 		}
 		
-		protected function onRepeatHandler(evt:ScreenEvent):void
+		protected function onRepeatHandler(evt:PlayerEvent):void
 		{
 			view.repeat();
 		}
@@ -52,7 +51,7 @@
 				if(!model.isComplete)
 				{
 					model.complete();
-					eventDispatcher.dispatchEvent(new ScreenEvent(ScreenEvent.COMPLETE));
+					eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.COMPLETE));
 				}
 			}
 		}

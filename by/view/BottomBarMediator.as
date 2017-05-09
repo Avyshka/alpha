@@ -1,10 +1,9 @@
 ﻿package by.view
 {
 	import org.robotlegs.mvcs.Mediator;
-	import by.controller.BottomBarEvent;
 	import flash.events.MouseEvent;
-	import by.model.BottomBarModel;
-	import by.controller.ScreenEvent;
+	import by.model.PlayerModel;
+	import by.controller.PlayerEvent;
 
 	public class BottomBarMediator extends Mediator
 	{
@@ -12,7 +11,7 @@
 		public var view:BottomBarView;
 		
 		[Inject]
-		public var model:BottomBarModel;
+		public var model:PlayerModel;
 		
 		public function BottomBarMediator()
 		{
@@ -29,7 +28,7 @@
 			eventMap.mapListener(view.btnPlay, MouseEvent.MOUSE_DOWN, onDown);
 			eventMap.mapListener(view.btnPlay, MouseEvent.MOUSE_OUT, onOut);
 			
-			eventMap.mapListener(eventDispatcher, ScreenEvent.COMPLETE, onComplete);
+			eventMap.mapListener(eventDispatcher, PlayerEvent.COMPLETE, onComplete);
 		}
 		
 		protected function onClick(e:MouseEvent):void
@@ -41,7 +40,7 @@
 					// Manipulate the model
 					model.play();
 					// Dispatch to context
-					eventDispatcher.dispatchEvent(new BottomBarEvent(BottomBarEvent.PLAY));
+					eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.PLAY));
 					view.play();
 				}
 				else
@@ -49,7 +48,7 @@
 					// Manipulate the model
 					model.stop();
 					// Dispatch to context
-					eventDispatcher.dispatchEvent(new BottomBarEvent(BottomBarEvent.STOP));
+					eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.STOP));
 					view.stop();
 				}
 			}
@@ -58,8 +57,8 @@
 				// Manipulate the model
 				model.play();
 				// Dispatch to context
-				eventDispatcher.dispatchEvent(new ScreenEvent(ScreenEvent.REPEAT));
-				eventDispatcher.dispatchEvent(new BottomBarEvent(BottomBarEvent.PLAY));
+				eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.REPEAT));
+				eventDispatcher.dispatchEvent(new PlayerEvent(PlayerEvent.PLAY));
 				view.play();
 			}
 			
@@ -81,7 +80,7 @@
 			view.down();
 		}
 		
-		protected function onComplete(evt:ScreenEvent):void
+		protected function onComplete(evt:PlayerEvent):void
 		{
 			view.repeat();
 		}
